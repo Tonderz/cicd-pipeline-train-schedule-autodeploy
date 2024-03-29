@@ -16,9 +16,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t mydocker .'
-                  sh 'docker run -d --name train -p 9090:8080 mydocker'
+                    app = docker.build(DOCKER_IMAGE_NAME)
+                    app.inside {
+                        sh 'echo Hello, World!'
                     }
+                }
                 }
             }
         }
