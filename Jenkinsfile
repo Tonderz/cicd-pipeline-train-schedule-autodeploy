@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                   sh 'docker build -t mydocker .'
-                  sh 'docker run -d --name train -p 9090:9090 mydocker'
+                  sh 'docker run -d --name train -p 9090:8080 mydocker'
                     }
                 }
             }
