@@ -34,16 +34,7 @@ pipeline {
             }
         }
             stage('CanaryDeploy') {
-            environment { 
-                CANARY_REPLICAS = 1
-            }
-            steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube-canary.yml',
-                    enableConfigSubstitution: true
-                )
-            }
+            sh 'kubectl apply -f train-schedule-kube-canary.yml'
         }
         }
         }
