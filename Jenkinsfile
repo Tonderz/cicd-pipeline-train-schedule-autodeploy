@@ -34,8 +34,11 @@ pipeline {
             }
         }
             stage('CanaryDeploy') {
+            steps{
             sh 'kubectl apply -f train-schedule-kube-canary.yml'
+            }
         }
         }
+}
  
 
